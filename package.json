@@ -28,7 +28,7 @@
     "eslint-config-airbnb-base": "^8.0.0",
     "eslint-plugin-html": "^1.5.3",
     "eslint-plugin-import": "1.16.0",
-    "eslint-plugin-json": "1.2.0",
+    "eslint-plugin-json": "^1.2.0",
     "npm-check-updates": "^2.8.0",
     "nsp": "^2.1.0",
     "tap": "^7.1.2"
