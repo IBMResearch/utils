@@ -8,7 +8,7 @@ Some common utils we use in our projects: Lodash, Bluebird, [Bluemix](http://www
 
 ## Install
 
-We're not pushing it to npm because it's
+We're not pushing it to npm because it's only for internal use.
 
 ```sh
 npm i --save IBMResearch/utils
