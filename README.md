@@ -1,6 +1,7 @@
 # utils
 
 [![Continuos integration](https://api.travis-ci.org/IBMResearch/utils.svg)](https://travis-ci.org/IBMResearch/utils)
+[![NSP Status](https://nodesecurity.io/orgs/ibmresearch/projects/fdaeece0-ba09-4c25-a031-fa6379ec1366/badge)](https://nodesecurity.io/orgs/ibmresearch/projects/fdaeece0-ba09-4c25-a031-fa6379ec1366)
 
 Some common utils we use in our projects: Lodash, Bluebird, [Bluemix](http://www.ibm.com/cloud-computing/bluemix) logging/error reporting, debug ...
 
