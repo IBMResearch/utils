@@ -1,20 +1,13 @@
 {
   "name": "utils",
-  "description": "Express middleware to store requests metadata into a database.",
   "version": "1.0.0",
   "author": {
     "name": "IBM Research - Science & Solutions team",
     "email": "isf@zurich.ibm.com"
   },
-  "contributors": [
-    "https://github.com/IBMResearch/utils/graphs/contributors"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/IBMResearch/utils/utils.git"
-  },
-  "bugs": {
-    "url": "https://github.com/IBMResearch/utils/issues"
   },
   "scripts": {
     "test": "tap test",

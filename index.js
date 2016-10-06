@@ -42,10 +42,6 @@ utils.Promise = require('bluebird');
 // From here some helpers to print in Bluemix native logs and Monitoring and
 // Analytics addon in a more or less comfortable way. Both don't support colors :(.
 
-// Not errors but we want them always printed.
-// Things we want to know that happened (ie: bad login).
-// Keep it to the minimal, because it's also printed in production.
-// and "console.*" are sync.
 utils.info = (msg, obj) => {
   let finalMsg = `\n${msg || '-'}`;
 
@@ -55,7 +51,6 @@ utils.info = (msg, obj) => {
 };
 
 
-// Only for critical errors.
 utils.error = (msg, err) => {
   const separator = '----------';
   let finalMsg = `\nERROR: ${msg || '-'}`;
