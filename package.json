@@ -1,0 +1,49 @@
+{
+  "name": "utils",
+  "description": "Express middleware to store requests metadata into a database.",
+  "version": "1.0.0",
+  "author": {
+    "name": "IBM Research - Science & Solutions team",
+    "email": "isf@zurich.ibm.com"
+  },
+  "contributors": [
+    "https://github.com/IBMResearch/utils/graphs/contributors"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IBMResearch/utils/utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/IBMResearch/utils/issues"
+  },
+  "scripts": {
+    "test": "tap test",
+    "lint": "eslint .",
+    "dep-ok": "depcheck --ignores=eslint-plugin-html",
+    "dep-sec": "nsp check",
+    "dep-old": "ncu",
+    "posttest": "npm run lint && npm run dep-ok && npm run dep-sec"
+  },
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "debug": "^2.2.0",
+    "lodash": "^4.16.3"
+  },
+  "devDependencies": {
+    "depcheck": "^0.6.4",
+    "eslint": "^3.6.0",
+    "eslint-config-airbnb-base": "^8.0.0",
+    "eslint-plugin-html": "^1.5.3",
+    "eslint-plugin-import": "1.16.0",
+    "eslint-plugin-json": "1.2.0",
+    "npm-check-updates": "^2.8.0",
+    "nsp": "^2.1.0",
+    "tap": "^7.1.2"
+  },
+  "engines": {
+    "node": "6.7.0",
+    "npm": "3.x.x"
+  },
+  "private": true,
+  "license": "MIT"
+}
