@@ -93,6 +93,18 @@ console.log(appEnv.dbUris.composeCloudant]);
 ```
 
 
+#### `getUserId(req) ->`
+A method to get the user ID in LoppBack from a request object. Useful with [this middleware](https://github.com/IBMResearch/express-middleware-todb).
+- `req` (object) - Loppback request object.
+
+```javascript
+...
+const getUserId = require('utils').getUserId;
+
+app.use(toDb(db, { geo: true, idFunc: getUserId, dbOpts: { type: 'elastic' } }));
+```
+
+
 ## Developer guide
 
 - Use [GitHub pull requests](https://help.github.com/articles/using-pull-requests).
