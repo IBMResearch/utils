@@ -87,9 +87,9 @@ console.log(appEnv.inBluemix);
 console.log(appEnv.port);
 console.log(appEnv.url);
 console.log(appEnv.dbUris.mongo);
-console.log(appEnv.dbUris['compose-mongo']);
-console.log(appEnv.dbUris['compose-elastic']);
-console.log(appEnv.dbUris['compose-cloudant']);
+console.log(appEnv.dbUris.composeMongo);
+console.log(appEnv.dbUris.composeElastic);
+console.log(appEnv.dbUris.composeCloudant]);
 ```
 
 
