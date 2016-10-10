@@ -77,6 +77,21 @@ const err = new Error('Simulating an error.')
 error('User not found', err );
 ```
 
+#### `getAppEnv() ->`
+A method to parse the important info from Bluemix app environments.
+
+```javascript
+const appEnv = require('utils').getAppEnv();
+
+console.log(appEnv.inBluemix);
+console.log(appEnv.port);
+console.log(appEnv.url);
+console.log(appEnv.dbUris.mongo);
+console.log(appEnv.dbUris['compose-mongo']);
+console.log(appEnv.dbUris['compose-elastic']);
+console.log(appEnv.dbUris['compose-cloudant']);
+```
+
 
 ## Developer guide
 

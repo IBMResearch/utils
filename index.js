@@ -66,4 +66,7 @@ utils.error = (msg, err) => {
 };
 
 
+utils.getAppEnv = require('./lib/getAppEnv.js');
+
+
 module.exports = utils;

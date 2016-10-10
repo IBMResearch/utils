@@ -29,7 +29,6 @@ const test = require('tap').test; // eslint-disable-line import/no-extraneous-de
 
 const method = require('../lib/pathToTag');
 
-// Examples of tests for sync methods (vs. promises)
 
 test('with a valid file name', (assert) => {
   assert.plan(1);
