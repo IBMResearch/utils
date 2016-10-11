@@ -78,14 +78,18 @@ error('User not found', err );
 ```
 
 #### `getAppEnv() ->`
-A method to parse the important info from Bluemix app environments.
+A method to parse the important info from Bluemix app environments. Basically the ["cfenv"](https://www.npmjs.com/package/cfenv) result with some additions.
 
 ```javascript
 const appEnv = require('utils').getAppEnv();
 
-console.log(appEnv.inBluemix);
+// Provided by "cfenv".
 console.log(appEnv.port);
 console.log(appEnv.url);
+console.log(appEnv.isLocal);
+
+// Our additions.
+console.log(appEnv.inBluemix);
 console.log(appEnv.dbUris.mongo);
 console.log(appEnv.dbUris.composeMongo);
 console.log(appEnv.dbUris.composeElastic);
