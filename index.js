@@ -18,6 +18,7 @@ const pathToTag = require('./lib/pathToTag');
 // Attaching more common stuff from here.
 
 utils.debug = (projectName, fullPath) => debug(`${projectName}:${pathToTag(fullPath)}`);
+const dbg = utils.debug('utils', __filename);
 
 utils.Promise = require('bluebird');
 
@@ -52,7 +53,7 @@ utils.error = (msg, err) => {
 utils.getAppEnv = require('./lib/getAppEnv.js');
 
 
-utils.getUserId = (req) => {
+function getUserId(req) {
   const app = req.app;
 
   return new Promise((resolve, reject) => {
@@ -77,7 +78,82 @@ utils.getUserId = (req) => {
     })
     .catch(err => reject(new Error(`Finding the User ID: ${err.message}`)));
   });
+}
+
+// User and roles to create is no one exists.
+const defaultUser = {
+  username: 'admin',
+  password: 'admin',
+  email: 'admin@myapp.mybluemix.net',
 };
+// "admin" not used for now, but eventually we're going to need it.
+const defaultRoles = ['frontend', 'admin'];
+
+function createUser(app, opts) {
+  return new utils.Promise((resolve, reject) => {
+    const User = app.models.User;
+    const Role = app.models.Role;
+    const RoleMapping = app.models.RoleMapping;
+
+    // Parsing the options.
+    if (opts.username) { defaultUser.username = opts.username; }
+    if (opts.password) { defaultUser.password = opts.password; }
+    if (opts.email) { defaultUser.email = opts.email; }
+
+    dbg('Checking if I need to do any users/roles related tasks...');
+    // We can do it in parallel with the last one.
+    // Only first run in a new database, we rely in if any user exists to know it.
+    User.find({})
+    .then((users) => {
+      dbg(`Number of users: ${users.length}`);
+
+      if (users.length > 0) {
+        dbg('Not in first run, so doing nothing');
+
+        resolve();
+        return;
+      }
+
+      dbg('First app run, creating default user ...');
+      User.create(defaultUser)
+      .then((user) => {
+        dbg('User created', user);
+
+        if (!user) {
+          reject(new Error('User not created properly'));
+
+          return;
+        }
+
+        dbg('Creating roles ...');
+        utils.Promise.map(defaultRoles, roleName => Role.create({ name: roleName }))
+        .then((roles) => {
+          const frontRole = roles[0];
+
+          dbg('Roles created', defaultRoles);
+          dbg('Adding user to the Frontend role ...');
+
+          frontRole.principals.create({
+            principalType: RoleMapping.USER,
+            principalId: user.id,
+          })
+          .then(resolve)
+          .catch(err => reject(new Error(`Adding the user to the role: ${err.message}`)));
+        })
+        .catch(err => reject(new Error(`Creating roles: ${err.message}`)));
+      })
+      .catch(err => reject(new Error(`Creating the default user: ${err.message}`)));
+    })
+    .catch(err => reject(new Error(`Checking if any user exist: ${err.message}`)));
+  });
+}
+
+
+utils.loopback = { getUserId, createUser };
+
+
+// TODO: Remove this when we've changed the way of use in JRNY.
+utils.getUserId = getUserId;
 
 
 module.exports = utils;

@@ -97,15 +97,34 @@ console.log(appEnv.dbUris.cloudant]);
 ```
 
 
-#### `getUserId(req) ->`
+#### `loopback.getUserId(req) ->`
 A method to get the user ID in LoppBack from a request object. Useful with [this middleware](https://github.com/IBMResearch/express-middleware-todb).
-- `req` (object) - Loppback request object.
+- `req` (object) - A Loopback "request" object.
 
 ```javascript
 ...
-const getUserId = require('utils').getUserId;
+const getUserId = require('utils').loopback.getUserId;
 
 app.use(toDb(db, { geo: true, idFunc: getUserId, dbOpts: { type: 'elastic' } }));
+```
+
+
+#### `loopback.createUser(app, opts) ->`
+A method to get the user ID in LoppBack from a request object. Useful with [this middleware](https://github.com/IBMResearch/express-middleware-todb).
+- `app` (object) - A Loopback "app" object.
+- `opts` (object) - An object with:
+ - `username` (string) - Username of the user to create. (default: 'admin')
+ - `password` (string) - Password of the user to create. (default: 'admin')
+ - `email` (string) - Email of the user to create. (default: 'admin@admin@myapp.mybluemix.net')
+```javascript
+...
+utils.loopback.createUser(app, {
+  username: 'test',
+  password: 'test',
+  email: 'test@api-starter.mybluemix.net',
+})
+.then(() => dbg('All user and roles related tasks finished.'))
+.catch(err => utils.error('Creating the default user/roles', err));
 ```
 
 
