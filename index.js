@@ -89,7 +89,7 @@ const defaultUser = {
 // "admin" not used for now, but eventually we're going to need it.
 const defaultRoles = ['frontend', 'admin'];
 
-function createUser(app, opts) {
+function createUser(app, opts = {}) {
   return new utils.Promise((resolve, reject) => {
     const User = app.models.User;
     const Role = app.models.Role;
