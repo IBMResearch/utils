@@ -93,7 +93,7 @@ console.log(appEnv.inBluemix);
 console.log(appEnv.dbUris.mongo);
 console.log(appEnv.dbUris.composeMongo);
 console.log(appEnv.dbUris.composeElastic);
-console.log(appEnv.dbUris.composeCloudant]);
+console.log(appEnv.dbUris.cloudant]);
 ```
 
 
