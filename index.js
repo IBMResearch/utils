@@ -9,18 +9,18 @@
 'use strict';
 
 const debug = require('debug');
+const Promise = require('bluebird');
+require('bluebird-extra').usePromise(Promise);
 // Lodash as base.
 const utils = require('lodash');
 
 const pathToTag = require('./lib/pathToTag');
 
 
-// Attaching more common stuff from here.
-
 utils.debug = (projectName, fullPath) => debug(`${projectName}:${pathToTag(fullPath)}`);
 const dbg = utils.debug('utils', __filename);
 
-utils.Promise = require('bluebird');
+utils.Promise = Promise;
 
 
 // From here some helpers to print in Bluemix native logs and Monitoring and

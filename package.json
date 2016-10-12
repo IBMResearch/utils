@@ -19,13 +19,13 @@
   },
   "dependencies": {
     "bluebird": "^3.4.6",
+    "bluebird-extra": "^2.0.0",
     "cfenv": "^1.0.3",
     "debug": "^2.2.0",
     "lodash": "^4.16.3"
   },
   "devDependencies": {
     "depcheck": "^0.6.4",
-    "eslint": "^3.6.0",
     "eslint": "^3.6.0",
     "eslint-config-airbnb-base": "^8.0.0",
     "eslint-plugin-import": "^1.16.0",

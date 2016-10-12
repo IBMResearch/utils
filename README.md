@@ -31,7 +31,7 @@ console.log(utils.map([1,2], (x) => x * 2));
 ```
 
 #### Bluebird
-Normally we prefer to use [Node ES6/7 native stuff](https://nodejs.org/en/docs/es6/), but [Bluebird](http://bluebirdjs.com/) gives us some useful (non-standard) methods like "Promise.map". Moreover [LoopBack]([LoopBack](https://loopback.io)) uses it [as promise library](https://github.com/strongloop/loopback/blob/master/3.0-RELEASE-NOTES.md#always-use-bluebird-as-promise-library).
+Normally we prefer to use [Node ES6/7 native stuff](https://nodejs.org/en/docs/es6/), but [Bluebird](http://bluebirdjs.com/) gives us some useful (non-standard) methods like "Promise.map". Moreover [LoopBack]([LoopBack](https://loopback.io)) uses it [as promise library](https://github.com/strongloop/loopback/blob/master/3.0-RELEASE-NOTES.md#always-use-bluebird-as-promise-library). We also include the ["bluebird-extra"](https://github.com/overlookmotel/bluebird-extra) library methods.
 
 ```javascript
 const Promise = require('utils').Promise;
