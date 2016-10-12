@@ -115,12 +115,13 @@ A method to get the user ID in LoppBack from a request object. Useful with [this
 - `opts` (object) - An object with:
  - `username` (string) - Username of the user to create. (default: 'admin')
  - `password` (string) - Password of the user to create. (default: 'admin')
- - `email` (string) - Email of the user to create. (default: null)
+ - `email` (string) - Email of the user to create. (default: 'admin@admin@myapp.mybluemix.net')
 ```javascript
 ...
 utils.loopback.createUser(app, {
   username: 'test',
   password: 'test',
+  email: 'test@api-starter.mybluemix.net',
 })
 .then(() => dbg('All user and roles related tasks finished.'))
 .catch(err => utils.error('Creating the default user/roles', err));

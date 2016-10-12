@@ -84,6 +84,7 @@ function getUserId(req) {
 const defaultUser = {
   username: 'admin',
   password: 'admin',
+  email: 'admin@myapp.mybluemix.net',
 };
 // "admin" not used for now, but eventually we're going to need it.
 const defaultRoles = ['frontend', 'admin'];
