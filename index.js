@@ -107,7 +107,7 @@ function createUser(app, opts = {}) {
     .then((users) => {
       dbg(`Number of users: ${users.length}`);
 
-      if (users.length > 0) {
+      if (users && users.length && users.length > 0) {
         dbg('Not in first run, so doing nothing');
 
         resolve();
@@ -150,10 +150,6 @@ function createUser(app, opts = {}) {
 
 
 utils.loopback = { getUserId, createUser };
-
-
-// TODO: Remove this when we've changed the way of use in JRNY.
-utils.getUserId = getUserId;
 
 
 module.exports = utils;
