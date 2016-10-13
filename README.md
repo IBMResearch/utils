@@ -30,7 +30,7 @@ const utils = require('utils');
 console.log(utils.map([1,2], (x) => x * 2));
 ```
 
-#### Lodash
+#### require-directory
 In the root we have also have the [require-directory](https://github.com/troygoode/node-require-directory) method.
 
 ```javascript
