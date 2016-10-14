@@ -25,7 +25,7 @@ utils.getAppEnv = require('./lib/getAppEnv');
 
 
 utils.trickMongoUri = (originalUri, dbName) => {
-  const fixDbName = originalUri.replace('/admin?', dbName);
+  const fixDbName = originalUri.replace('/admin?', `/${dbName}?`);
 
   return `${fixDbName}&authSource=admin`;
 };
