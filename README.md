@@ -52,7 +52,7 @@ const readFileP = Promise.promisify(require('fs').readFile);
 
 ### Methods
 
-#### `debug(projectName, filePath) -> Object`
+#### `debug(projectName, filePath) -> object`
 A wrapper around the [debug](https://github.com/visionmedia/debug) module. It adds some stuff to print the tag to be consistent with LoopBack. The two options are related with it.
 - `projectName` (string) - The name of the project.
 - `filePath` (string) - The full path of the file.
@@ -88,7 +88,7 @@ const err = new Error('Simulating an error.')
 error('User not found', err );
 ```
 
-#### `getAppEnv() ->`
+#### `getAppEnv() -> object`
 A method to parse the important info from Bluemix app environments. Basically the ["cfenv"](https://www.npmjs.com/package/cfenv) result with some additions.
 
 ```javascript
@@ -108,8 +108,20 @@ console.log(appEnv.dbUris.composeRethink);
 console.log(appEnv.dbUris.cloudant]);
 ```
 
+#### `trickMongoUri(originalUri, dbName) -> string`
+A trim to the "composeMongo" field returned by the last method. The problem is that Compose includes the DB name (always "admin") in the URI, and we need to write to another DB.
+- `originalUri` (string) - Uri returned by method "getAppEnv". The one added in Bluemix as environment variable.
+- `dbName` (string) - Name of the database you want to use.
 
-#### `loopback.getUserId(req) ->`
+```javascript
+const utils = require('utils');
+const appEnv = utils.getAppEnv();
+
+console.log(utils.trickMongoUri(appEnv.dbUris.composeMongo, 'api-starter'));
+```
+
+
+#### `loopback.getUserId(req) -> function`
 A method to get the user ID in LoppBack from a request object. Useful with [this middleware](https://github.com/IBMResearch/express-middleware-todb).
 - `req` (object) - A Loopback "request" object.
 
@@ -121,7 +133,7 @@ app.use(toDb(db, { geo: true, idFunc: getUserId, dbOpts: { type: 'elastic' } }))
 ```
 
 
-#### `loopback.createUser(app, opts) ->`
+#### `loopback.createUser(app, opts) -> Promise`
 A method to get the user ID in LoppBack from a request object. Useful with [this middleware](https://github.com/IBMResearch/express-middleware-todb).
 - `app` (object) - A Loopback "app" object.
 - `opts` (object) - An object with:

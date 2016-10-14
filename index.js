@@ -24,6 +24,13 @@ utils.requireDir = require('./lib/requireDir');
 utils.getAppEnv = require('./lib/getAppEnv');
 
 
+utils.trickMongoUri = (originalUri, dbName) => {
+  const fixDbName = originalUri.replace('/admin?', dbName);
+
+  return `${fixDbName}&authSource=admin`;
+};
+
+
 utils.loopback = utils.requireDir(module, './lib/loopback');
 
 
