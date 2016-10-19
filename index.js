@@ -29,9 +29,10 @@ utils.getAppEnv = require('./lib/getAppEnv');
 
 
 utils.trickMongoUri = (originalUri, dbName) => {
-  const fixDbName = originalUri.replace('/admin?', `/${dbName}?`);
+  const fixed = originalUri.replace('/admin?', `/${dbName}?`);
 
-  return `${fixDbName}&authSource=admin`;
+  // TODO: Use the proper CA (in the Bluemix env var) here.
+  return `${fixed}&authSource=admin&sslValidate=false`;
 };
 
 
