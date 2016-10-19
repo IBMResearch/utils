@@ -39,6 +39,15 @@ const utils = require('utils');
 const routes = utils.requireDir(module, './routes');
 ```
 
+#### validator.js
+The full [validator.js](https://github.com/chriso/validator.js) object.
+
+```javascript
+const utils = require('utils');
+
+utils.validator.isEmail('foo@bar.com'); //=> true
+```
+
 
 #### Bluebird
 Normally we prefer to use [Node ES6/7 native stuff](https://nodejs.org/en/docs/es6/), but [Bluebird](http://bluebirdjs.com/) gives us some useful (non-standard) methods like "Promise.map". Moreover [LoopBack]([LoopBack](https://loopback.io)) uses it [as promise library](https://github.com/strongloop/loopback/blob/master/3.0-RELEASE-NOTES.md#always-use-bluebird-as-promise-library). We also include the ["bluebird-extra"](https://github.com/overlookmotel/bluebird-extra) library methods.

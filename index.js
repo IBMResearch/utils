@@ -8,8 +8,12 @@
 
 'use strict';
 
+
 // Lodash as base.
 const utils = require('lodash');
+
+
+utils.validator = require('validator');
 
 
 utils.debug = require('./lib/debug');
