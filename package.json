@@ -37,8 +37,8 @@
     "tap": "^7.1.2"
   },
   "engines": {
-    "node": ">=6.0",
-    "npm": ">=3.0"
+    "node": ">=6",
+    "npm": ">=3"
   },
   "private": true,
   "license": "MIT"
